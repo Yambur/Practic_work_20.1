@@ -9,4 +9,4 @@ def index(request):
         foto = request.POST.get('foto')
         dr = request.POST.get('dr')
         print(f'{name} {breed} {foto} {dr}')
-    return render(request, 'Dogs/index.html')
+    return render(request, 'dogs/index.html')
