@@ -6,7 +6,7 @@ def index(request):
     if request.method == 'POST':
         name = request.POST.get('name')
         breed = request.POST.get('breed')
-        foto = request.POST.get('foto')
-        dr = request.POST.get('dr')
-        print(f'{name} {breed} {foto} {dr}')
+        photo = request.POST.get('foto')
+        birth_day = request.POST.get('dr')
+        print(f'{name} {breed} {photo} {birth_day}')
     return render(request, 'dogs/index.html')

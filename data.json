@@ -1,0 +1,38 @@
+[
+  {
+    "model": "dogs.breed",
+    "pk": 1,
+    "fields": {
+      "name": "Ретривер",
+      "description": "Злой как сам сатана"
+    }
+  },
+  {
+    "model": "dogs.breed",
+    "pk": 2,
+    "fields": {
+      "name": "Карликовый пинчер",
+      "description": "Ссыться от одного чиха"
+    }
+  },
+  {
+    "model": "dogs.dog",
+    "pk": 1,
+    "fields": {
+      "name": "Пусибой",
+      "breed": 2,
+      "photo": "",
+      "birth_day": null
+    }
+  },
+  {
+    "model": "dogs.dog",
+    "pk": 2,
+    "fields": {
+      "name": "Люцифер",
+      "breed": 1,
+      "photo": "",
+      "birth_day": null
+    }
+  }
+]
