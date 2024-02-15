@@ -14,6 +14,7 @@
 
             <div class="card-body">
                 <p class="card-text">{{ object.name|title }}</p>
+                <span class="text-muted">{{ object.birth_day }}</span>
                 <div class="d-flex justify-content-between align-items-center">
                     <div class="card_footer">
                         <a class="btn btn-outline-success" href="{% url 'dogs:breed_detail' object.pk %}">Посмотреть</a>
