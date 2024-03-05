@@ -20,8 +20,8 @@ class DogForm(StyleFormMixin, forms.ModelForm):
             field.widget.attrs['class'] = 'form-control'
     class Meta:
         model = Dog
-        fields = '__all__'
-        # exclude = ('birth_day',)
+        #fields = '__all__'
+        exclude = ('owner',)
 
     def clean_birth_day(self):
         cleaned_data = self.cleaned_data['birth_day']

@@ -24,7 +24,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-sm-8 col-md-7 py-4">
-                    <h4 class="text-white">Info</h4>
+                    <h4 class="text-white">Информация</h4>
                     <p class="text-muted"></p>
                 </div>
                 <div class="col-sm-4 offset-md-1 py-4">
@@ -33,6 +33,7 @@
                         <li><a href="{% url 'dogs:index'  %}" class="text-white">Главная</a></li>
                         <li><a href="{% url 'dogs:breeds'  %}" class="text-white">Породы</a></li>
                         {% if user.is_authenticated %}
+                            <li><a href="{% url 'users:profile'  %}" class="text-white">Профиль</a></li>
                             <li><a href="{% url 'users:logout'  %}" class="text-white">Выйти</a></li>
                         {% else %}
                             <li><a href="{% url 'users:login'  %}" class="text-white">Войти</a></li>

@@ -20,22 +20,6 @@ class IndexView(TemplateView):
         return context_data
 
 
-"""def index(request):
-    context = {
-        'object_list': Breed.objects.all()[:3],
-        'title': 'Питомник - Главная'
-    }
-    return render(request, 'dogs/index.html', context)"""
-
-"""def breeds(request):
-    context = {
-        'object_list': Breed.objects.all(),
-        'title': 'Питомник - Все наши породы'
-    }
-    return render(request, 'dogs/breed_list.html', context)
-"""
-
-
 class BreedListView(ListView):
     model = Breed
     extra_context = {
@@ -43,14 +27,10 @@ class BreedListView(ListView):
     }
 
 
-def breeds_list(request, pk):
-    breed_item = Breed.objects.get(pk=pk)
-    context = {
-        'object_list': Dog.objects.filter(breed_id=pk),
-        'breed_pk': breed_item.pk,
-        'title': f'Собаки породы - Все наши породы {breed_item.name}'
-    }
-    return render(request, 'dogs/dog_list.html', context)
+class BreedDetailView(DetailView):
+    model = Breed
+    success_url = reverse_lazy('dogs:breeds')
+
 
 
 class DogListView(ListView):
@@ -71,15 +51,6 @@ class DogListView(ListView):
         return context_data
 
 
-class BreedDetailView(DetailView):
-    model = Breed
-    success_url = reverse_lazy('dogs:breeds')
-
-
-"""class DogCreateView(CreateView):
-    model = Dog
-    fields = ('name', 'breed',)
-    success_url = reverse_lazy('dogs:breeds')"""
 
 
 class DogCreateView(CreateView):
@@ -87,13 +58,12 @@ class DogCreateView(CreateView):
     form_class = DogForm
     success_url = reverse_lazy('dogs:breeds')
 
-    """def form_valid(self, form):
-        if form.is_valid():
-            new_dog = form.save()
-            new_dog.slug = slugify(new_dog.name)
-            new_dog.save()
+    def form_valid(self, form):
+        self.object = form.save()
+        self.object.owner = self.request.user
+        self.object.save()
+        return super().form_valid(form)
 
-        return super().form_valid(form)"""
 
 class DogUpdateView(UpdateView):
     model = Dog
@@ -124,6 +94,12 @@ class DogUpdateView(UpdateView):
             formset.instance = self.object
             formset.save()
         return super().form_valid(form)
+
+
+class DogDetailView(DetailView):
+    model = Dog
+
+
 
 
 class DogDeleteView(DeleteView):

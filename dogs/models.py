@@ -1,3 +1,4 @@
+from django.conf import settings
 from django.db import models
 from django.urls import reverse
 
@@ -22,6 +23,8 @@ class Dog(models.Model):
     breed = models.ForeignKey(Breed, on_delete=models.CASCADE, verbose_name='Порода')
     photo = models.ImageField(upload_to='dogs/', **NULLABLE, verbose_name='Фото')
     birth_day = models.DateTimeField(**NULLABLE, verbose_name='Дата рождения')
+
+    owner = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.SET_NULL, **NULLABLE, verbose_name='владелец')
 
     #def get_absolute_url(self):
     #    return reverse('dogs:detail', args=[str(self.id)])

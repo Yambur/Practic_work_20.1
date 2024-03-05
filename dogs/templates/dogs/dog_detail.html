@@ -1,0 +1,42 @@
+{% extends 'dogs/base.html' %}
+{% load my_tags %}
+{% block content %}
+<div class="col-12">
+    <div class="row">
+        <div class="col-6">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">
+                        Информация о собаке
+                    </h3>
+                </div>
+                <div class="card-body">
+                    <table class="table">
+                        <tr>
+                            <svg class="bd-placeholder-img card-img-top" width="100%" height="225"
+                                 xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail"
+                                 preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title>
+                                <rect width="100%" height="100%" fill="#55595c"/>
+                                <image href="{{ object.photo | mymedia }}" width="100%" height="100%"/>
+                            </svg>
+                        </tr>
+                        <tr>
+                            <td>Кличка</td>
+                            <td>{{ object.name }}</td>
+                        </tr>
+                        <tr>
+                            <td>Порода</td>
+                            <td>{{ object.breed }}</td>
+                        </tr>
+                        <tr>
+                            <td>О породе</td>
+                            <td>{{ object.breed.description }}</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <input type="button" onclick="history.back();" value="Назад" style="margin-top: 10px;"/>
+        </div>
+    </div>
+</div>
+{% endblock %}
